@@ -8,6 +8,8 @@ const AudioCard = ({ audio }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = React.createRef();
 
+  const audioURL = "https://aws-innovation-day-sound-files.s3.eu-west-1.amazonaws.com/"
+
   const handleOnClick = () => {
     const audioElement = audioRef.current;
   
@@ -24,7 +26,7 @@ const AudioCard = ({ audio }) => {
     <div className="audioCard">
     <Card>
       <CardContent>
-        <p>{audio.title}</p>
+        <p>{audio}</p>
         <Button
           component="label"
           variant="contained"
@@ -34,7 +36,7 @@ const AudioCard = ({ audio }) => {
           {isPlaying ? 'Pause' : 'Play'}
         </Button>
         <audio ref={audioRef}>
-          <source src={audio.audioUrl} type="audio/mp3" />
+          <source src={`${audioUrl}${audio}`} type="audio/mp3" />
         </audio>
       </CardContent>
     </Card>

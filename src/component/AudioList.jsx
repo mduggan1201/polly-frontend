@@ -12,7 +12,8 @@ const AudioList = () => {
 
   useEffect(() => {
     getAudio()
-    .then(({ audio }) => {
+    .then((res) => {
+        const audio = res.body.keys
         setAudioList(audio);
         setIsLoading(false)
         setIsRefreshing(false)
@@ -35,7 +36,7 @@ const AudioList = () => {
             </div>
           )
 
-  if(audioList.length === 0) return (<div>
+  if(audioList.length === 0 | !audioList) return (<div>
             <p>No Audio Found</p>
             <Button
             component="label"
@@ -52,7 +53,7 @@ return(
       <label>Audio</label>
       <ul>
           {audioList.map((audio) => {
-              return( <AudioCard key = {(audio.id)} audio = {audio} />
+              return( <AudioCard audio = {audio} />
               )
           })}
       </ul>
