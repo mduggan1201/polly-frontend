@@ -40,7 +40,7 @@ const InputTextBox = () => {
         Post Audio
       </Button>
       <FormGroup>
-      <FormControlLabel control = {<Checkbox onChange={handleCheckbox} />}  label="Speak Fast" />
+      <FormControlLabel control = {<Checkbox onChange={handleCheckbox} />}  label="Speak Fast" labelPlacement='top' />
       </FormGroup>
       
     
@@ -56,10 +56,16 @@ const InputContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 10px;
+  background: rgba( 255, 255, 255, 0.1 );
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 24px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 20px );
+  -webkit-backdrop-filter: blur( 20px );  
 `
+
+
+

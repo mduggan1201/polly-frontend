@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-image: url('https://www.cxtoday.com/wp-content/uploads/2018/10/AWSAmazonPolly.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 900px;
 }
 
 .App-logo {
@@ -13,7 +18,7 @@
   }
 }
 
-.App-header {
+.Header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -45,4 +50,11 @@ input[type="text"] {
   border-radius: 5px;
   font-size: 16px;
   outline: none;
+}
+.InputTextBox {
+  margin-bottom: 20px;
+}
+
+.AudioList {
+  margin-bottom: 20px;
 }
