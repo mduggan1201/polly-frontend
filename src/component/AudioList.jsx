@@ -3,6 +3,7 @@ import { getAudio } from "../utils/api"
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import AudioCard from './AudioCard';
+import styled from "styled-components";
 
 const AudioList = () => {
 
@@ -25,7 +26,7 @@ const AudioList = () => {
     setAudioList()
   }
 
-  if(isLoading) return(<div>
+  if(isLoading) return(<AudioListContainer>
               <p>Loading Audio List...</p>
                 <Button
                 component="label"
@@ -34,10 +35,10 @@ const AudioList = () => {
                 onClick={() => handleOnClick()} 
               >
               </Button>
-            </div>
+            </AudioListContainer>
           )
 
-  if(!audioList) return (<div>
+  if(!audioList) return (<AudioListContainer>
             <p>No Audio Found</p>
             <Button
             component="label"
@@ -46,28 +47,65 @@ const AudioList = () => {
             onClick={() => handleOnClick()} 
           >
           </Button>
-          </div>
+          </AudioListContainer>
   )
 
 return(
-  <div>
-      <label>Audio</label>
-      <ul>
-          {audioList.map((audio) => {
-              return( <AudioCard audio = {audio} />
-              )
-          })}
-      </ul>
-      <Button
+  <AudioListContainer>
+      <TableHeader>
+        <HeaderText>Audio</HeaderText>
+        <Button
             component="label"
             variant="contained"
             startIcon = {<RefreshIcon/>}
             onClick={() => handleOnClick()} 
           >
           </Button>
+        </TableHeader>
+      <ul>
+          {audioList.map((audio) => {
+              return( <AudioCard key = {audio} audio = {audio} />
+              )
+          })}
+      </ul>
 
-  </div> 
+
+  </AudioListContainer> 
 )
 }
 
 export default AudioList
+
+const AudioListContainer = styled.div `
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+width: 100%;
+max-width: 600px;
+margin: 0 auto;
+padding: 10px;
+background-color: #f5f5f5;
+border: 1px solid #ccc;
+border-radius: 24px;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+`
+
+const TableHeader = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: left;
+  justify-content: space-between;
+  width: 99%;
+  margin-bottom: 10px; 
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+const HeaderText = styled.div`
+  flex: 1; /* Makes the text take up all available space in the header */
+`;
+
