@@ -36,7 +36,7 @@ const AudioCard = ({ audio }) => {
           {isPlaying ? 'Pause' : 'Play'}
         </Button>
         <audio ref={audioRef}>
-          <source src={`${audioUrl}${audio}`} type="audio/mp3" />
+          <source src={`${audioURL}${audio}`} type="audio/mp3" />
         </audio>
       </CardContent>
     </Card>
