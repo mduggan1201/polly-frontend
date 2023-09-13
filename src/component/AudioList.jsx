@@ -13,15 +13,16 @@ const AudioList = () => {
   useEffect(() => {
     getAudio()
     .then((res) => {
-        const audio = res.body.keys
+        const audio = JSON.parse(res.body).keys
         setAudioList(audio);
         setIsLoading(false)
         setIsRefreshing(false)
     })
-  }, [isRefreshing])
+  }, [isRefreshing]) 
 
   const handleOnClick = () => {
     setIsRefreshing(true)
+    setAudioList()
   }
 
   if(isLoading) return(<div>
@@ -36,7 +37,7 @@ const AudioList = () => {
             </div>
           )
 
-  if(audioList.length === 0 | !audioList) return (<div>
+  if(!audioList) return (<div>
             <p>No Audio Found</p>
             <Button
             component="label"

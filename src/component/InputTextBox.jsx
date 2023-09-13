@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { postAudio } from "../utils/api"
 
 const InputTextBox = () => {
   const [inputText, setInputText] = useState('');
@@ -7,14 +8,12 @@ const InputTextBox = () => {
     setInputText(event.target.value);
   };
 
-  const postAudio = () => {
+  const handlePostAudio = () => {
     console.log(`Sending Post Request for ${inputText}`)
-
-    
     postAudio(inputText)
     .then(setInputText(""))
     .catch((err) => {
-      console.log(err.response.data.msg)
+      console.log(err.response.data)
     })
   }
 
@@ -26,10 +25,9 @@ const InputTextBox = () => {
         value={inputText}
         onChange={handleInputChange}
       />
-      <button onClick={postAudio}>Post Audio</button>
+      <button onClick={handlePostAudio}>Post Audio</button>
     </div>
   );
 }; 
 
 export default InputTextBox;
- 
