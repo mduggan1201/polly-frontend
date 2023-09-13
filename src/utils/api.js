@@ -11,7 +11,7 @@ export const getAudio = () => {
 }
 
 export const postAudio = (inputText) =>{
-  return audioAPI.post('/polly', {"body": inputText}).then((res) => {
+  return audioAPI.post('/polly', {"alertText": inputText}).then((res) => {
     return res.data
   })
 }
